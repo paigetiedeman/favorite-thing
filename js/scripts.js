@@ -1,20 +1,25 @@
-const favorite = [];
+const favorites = [];
 $(document).ready(function () {
   $("#favItems").submit(function (event) {
     const color = $("#color").val();
     const animal = $("#animal").val();
     const food = $("#food").val();
 
-    favorite.push(color, animal, food);
+    favorites.push(color, animal, food);
 
-    $("#favorite").text(favorite);
+    $("#favorite").text(favorites);
 
     event.preventDefault();
   });
 
   $("#push").click(function () {
-    const newArray = [];
-    newArray.push(favorite[1], favorite[0], favorite[2]);
-    $("#list").append($("<li>").text(newArray));
+    favorites.forEach(function (favorite) {
+      $("#list").append($("<li>").text(favorite));
+    });
+
+    // function without looping
+    // const newArray = [];
+    // newArray.push(favorite[1], favorite[0], favorite[2]);
+    // $("#list").append($("<li>").text(newArray));
   });
 });
